@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="#" class="login-form" name="submit-to-google-sheet">
+            <h2>Login Form</h2>
+
+            <input type="text" name="Name" id="Name" autocomplete="off" placeholder="Enter your name">
+            <input type="email" name="email" id="email" autocomplete="off" placeholder="Enter your email">
+            <input type="password" name="password" id="password" autocomplete="off" placeholder="Enter your password">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = '<url_token>'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {method: 'POST', body: new FormData
+                (form)
+            })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.log('Error!', error.message))
+        })
+    </script>
+</body>
+</html>
